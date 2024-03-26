@@ -1,6 +1,7 @@
 # Fluxo financeiro
 
 ´´´
+
 git remote add origin https://github.com/vitumattos/fluxo-financeiro-django.git
 git branch -M main
 git push -u origin main
@@ -26,4 +27,5 @@ git push -u origin main
 ### Meta n°01 Aplicativo para controle de investimento
 
 - :x: Criar um Index do app com bootstrap
+
 # fluxo-financeiro-django
