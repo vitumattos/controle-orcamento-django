@@ -7,16 +7,8 @@
 {% endblock %}
 
 {% block conteudo %}
-<div class="container-fluid pb-0 bg-info">
-    <div class="row pt-2">
-        <div class="col-11">
-            <h3>Listar do Fluxo Financeiro</h3>
-        </div>
-        <div class="col-1">
-            <a class="btn btn-secondary" href="{% url 'registrar-orcamento' %}" role="button">Registrar</a>
-        </div>
-
-    </div>
+<div class="container-fluid pl-3 py-2 text-light bg-info">
+    <h3 class="m-0">Listar do Fluxo Financeiro</h3>
 </div>
 <!-- Tabela responsiva para telefone -->
 <div class="container p-5" style="max-height: 100vh; overflow-y: auto">
@@ -42,10 +34,10 @@
                 <td>{{ orcamento.periodo }}</td>
                 <td>
                     <a href="{% url 'editar-orcamento' orcamento.pk %}" title="Editar">
-                        <i class="fa fa-edit px-1"></i>
+                        <i class="fa fa-edit px-1 text-light"></i>
                     </a>
                     <a href="{% url 'excluir-orcamento' orcamento.pk %}" title="Excluir">
-                        <i class="fa fa-trash px-2"></i>
+                        <i class="fa fa-trash px-2 text-light"></i>
                     </a>
                 </td>
             </tr>

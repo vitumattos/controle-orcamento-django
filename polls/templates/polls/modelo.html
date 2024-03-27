@@ -30,13 +30,13 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Visão geral</a>
+                    <a class="nav-link" href="{% url 'index-orcamento' %}">Visão geral</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'index-orcamento' %}">Orçamento</a>
+                    <a class="nav-link" href="{% url 'listar-orcamento' %}">Histórico</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Investimento</a>
+                    <a class="nav-link" href="{% url 'registrar-orcamento' %}">Registrar</a>
                 </li>
             </ul>
             <span class="navbar-text">

@@ -37,9 +37,6 @@ class OrcamentoIndexView(TemplateView):
         context['FIG_despesas_mes'] = analise.FIG_despesas_mes().to_html(
             full_html=False, default_height=250, default_width=425)
 
-        # import pdb
-        # pdb.set_trace()
-
         return context
 
 
