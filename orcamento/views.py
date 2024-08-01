@@ -25,7 +25,7 @@ class OrcamentoIndexView(TemplateView):
         # -----------
         context['DESPESA_FIXA'] = analise.DESPESA_FIXA()
         context['RENDA_EXTRA'] = analise.RENDA_EXTRA()
-        context['PERC_INVESTIMENTO'] = analise.PERC_INVESTIMENTO()
+        context['PERC_INVESTIMENTO_OU_CREDITO'] = analise.PERC_INVESTIMENTO_OU_CREDITO()
         context['CAIXA'] = analise.CAIXA()
         context['FIG_recebidos'] = analise.FIG_recebidos().to_html(
             full_html=False, default_height=250, default_width=175)

@@ -14,6 +14,8 @@ class Analise:
         self.df_ano = self.df[self.df['periodo'].dt.year == datetime.today().year]
 
         self.df_mes = self.df[self.df['periodo'] > datetime.today()-timedelta(datetime.today().day)]
+        # self.df_mes = self.df[(self.df['periodo'] > datetime.today()-timedelta(34)) &
+        #                       (self.df['periodo'] < datetime.today()-timedelta(3))]  # USAR O MES ANTERIOR
         self.df_mes = self.df_mes.sort_values('periodo', ascending=False)
         self.df_mes['valor'] = self.df_mes['valor'].apply(lambda x: float(x))
 
@@ -28,11 +30,14 @@ class Analise:
                             (self.df_mes['categoria'] != 'Salário')].sum().iloc[0], 2)
         return RENDA_EXTRA
 
-    def PERC_INVESTIMENTO(self):
-        SALARIO = self.df_mes['valor'][self.df_mes['categoria'] == 'Salário'].sum()
-        TOTAL_investido = self.df_mes[['valor']][self.df_mes['categoria'] == 'Investimento'].sum().iloc[0]
-        PERC_INVESTIMENTO = round((TOTAL_investido/SALARIO)*100, 2)
-        return PERC_INVESTIMENTO
+    def PERC_INVESTIMENTO_OU_CREDITO(self):
+        # SALARIO = self.df_mes['valor'][self.df_mes['categoria'] == 'Salário'].sum()
+        # TOTAL_investido = self.df_mes[['valor']][self.df_mes['categoria'] == 'Investimento'].sum().iloc[0]
+        # PERC_INVESTIMENTO = round((TOTAL_investido/SALARIO)*100, 2)
+        # return PERC_INVESTIMENTO
+
+        CREDITO = self.df_mes['valor'][self.df_mes['credito'] == 1].sum()
+        return round(CREDITO, 2)
 
     def CAIXA(self):
         SUM_receita = self.df_mes[['valor', 'periodo', 'categoria']][self.df_mes['ordem'] == 'RECEITA']
@@ -150,7 +155,8 @@ class Analise:
         return FIG_meta
 
     def FIG_despesas(self):
-        SUM_despesa = self.df_mes[['valor', 'periodo', 'categoria']][self.df_mes['ordem'] == 'DESPESA']
+        SUM_despesa = self.df_mes[['valor', 'periodo', 'categoria']][(
+            self.df_mes['ordem'] == 'DESPESA') & (self.df_mes['categoria'] != 'Investimento')]
         SUM_despesa['valor'] = -SUM_despesa['valor']
 
         FIG_despesas = go.Figure(data=[
